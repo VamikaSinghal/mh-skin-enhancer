@@ -1,0 +1,31 @@
+# ---- SECRETS: never commit these ----
+.env
+*.env
+secrets.*
+*secret*
+*api_key*
+*apikey*
+*token*.txt
+credentials*
+# Scrub HuggingFace / CivitAI / OpenAI keys out of any notebook before committing.
+
+# ---- Model weights (too large for git) ----
+*.safetensors
+*.ckpt
+*.pt
+*.pth
+*.bin
+*.gguf
+
+# ---- Images / outputs (keep the repo light; share via Canva/Drive) ----
+outputs/
+*.png
+*.jpg
+*.jpeg
+*.webp
+
+# ---- Junk ----
+.DS_Store
+__pycache__/
+.ipynb_checkpoints/
+*.tmp
