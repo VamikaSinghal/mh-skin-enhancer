@@ -1,0 +1,1360 @@
+{
+  "id": "d824f96a-0b41-427e-90f1-c5fc24802919",
+  "revision": 0,
+  "last_node_id": 66,
+  "last_link_id": 42,
+  "nodes": [
+    {
+      "id": 10,
+      "type": "UNETLoader",
+      "pos": [
+        50,
+        430
+      ],
+      "size": [
+        315,
+        82
+      ],
+      "flags": {},
+      "order": 0,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "MODEL",
+          "type": "MODEL",
+          "slot_index": 0,
+          "links": [
+            5
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.27.0",
+        "Node name for S&R": "UNETLoader"
+      },
+      "widgets_values": [
+        "flux-2-klein-9b.safetensors",
+        "fp8_e4m3fn"
+      ]
+    },
+    {
+      "id": 11,
+      "type": "VAELoader",
+      "pos": [
+        50,
+        570
+      ],
+      "size": [
+        315,
+        58
+      ],
+      "flags": {},
+      "order": 1,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "VAE",
+          "type": "VAE",
+          "slot_index": 0,
+          "links": [
+            6,
+            7
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.27.0",
+        "Node name for S&R": "VAELoader"
+      },
+      "widgets_values": [
+        "flux2-vae.safetensors"
+      ]
+    },
+    {
+      "id": 20,
+      "type": "FaceParsingModelLoader(FaceParsing)",
+      "pos": [
+        50,
+        820
+      ],
+      "size": [
+        300.9029296875,
+        58
+      ],
+      "flags": {},
+      "order": 2,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "FACE_PARSING_MODEL",
+          "type": "FACE_PARSING_MODEL",
+          "slot_index": 0,
+          "links": [
+            15
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfyui_face_parsing",
+        "ver": "9e3132f216abb0f385222f5086c3b247b29ed411",
+        "Node name for S&R": "FaceParsingModelLoader(FaceParsing)",
+        "aux_id": "Ryuukeisyou/comfyui_face_parsing"
+      },
+      "widgets_values": [
+        "cuda"
+      ]
+    },
+    {
+      "id": 21,
+      "type": "FaceParsingProcessorLoader(FaceParsing)",
+      "pos": [
+        50,
+        940
+      ],
+      "size": [
+        326.9341796875,
+        46
+      ],
+      "flags": {},
+      "order": 3,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "FACE_PARSING_PROCESSOR",
+          "type": "FACE_PARSING_PROCESSOR",
+          "slot_index": 0,
+          "links": [
+            16
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfyui_face_parsing",
+        "ver": "9e3132f216abb0f385222f5086c3b247b29ed411",
+        "Node name for S&R": "FaceParsingProcessorLoader(FaceParsing)",
+        "aux_id": "Ryuukeisyou/comfyui_face_parsing"
+      },
+      "widgets_values": []
+    },
+    {
+      "id": 42,
+      "type": "RandomNoise",
+      "pos": [
+        50,
+        1050
+      ],
+      "size": [
+        315,
+        82
+      ],
+      "flags": {},
+      "order": 4,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "NOISE",
+          "type": "NOISE",
+          "slot_index": 0,
+          "links": [
+            24
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.27.0",
+        "Node name for S&R": "RandomNoise"
+      },
+      "widgets_values": [
+        430595897745173,
+        "fixed"
+      ]
+    },
+    {
+      "id": 43,
+      "type": "KSamplerSelect",
+      "pos": [
+        50,
+        1200
+      ],
+      "size": [
+        315,
+        58
+      ],
+      "flags": {},
+      "order": 5,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "SAMPLER",
+          "type": "SAMPLER",
+          "slot_index": 0,
+          "links": [
+            25
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.27.0",
+        "Node name for S&R": "KSamplerSelect"
+      },
+      "widgets_values": [
+        "euler"
+      ]
+    },
+    {
+      "id": 30,
+      "type": "VAEEncode",
+      "pos": [
+        800,
+        50
+      ],
+      "size": [
+        210,
+        46
+      ],
+      "flags": {},
+      "order": 14,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "pixels",
+          "type": "IMAGE",
+          "link": 3
+        },
+        {
+          "name": "vae",
+          "type": "VAE",
+          "link": 6
+        }
+      ],
+      "outputs": [
+        {
+          "name": "LATENT",
+          "type": "LATENT",
+          "slot_index": 0,
+          "links": [
+            20
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.27.0",
+        "Node name for S&R": "VAEEncode"
+      },
+      "widgets_values": []
+    },
+    {
+      "id": 22,
+      "type": "FaceParse(FaceParsing)",
+      "pos": [
+        800,
+        240
+      ],
+      "size": [
+        300,
+        82
+      ],
+      "flags": {},
+      "order": 13,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "model",
+          "type": "FACE_PARSING_MODEL",
+          "link": 15
+        },
+        {
+          "name": "processor",
+          "type": "FACE_PARSING_PROCESSOR",
+          "link": 16
+        },
+        {
+          "name": "image",
+          "type": "IMAGE",
+          "link": 2
+        }
+      ],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": []
+        },
+        {
+          "name": "FACE_PARSING_RESULT",
+          "type": "FACE_PARSING_RESULT",
+          "slot_index": 1,
+          "links": [
+            17
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfyui_face_parsing",
+        "ver": "9e3132f216abb0f385222f5086c3b247b29ed411",
+        "Node name for S&R": "FaceParse(FaceParsing)",
+        "aux_id": "Ryuukeisyou/comfyui_face_parsing"
+      },
+      "widgets_values": []
+    },
+    {
+      "id": 31,
+      "type": "SetLatentNoiseMask",
+      "pos": [
+        1910,
+        50
+      ],
+      "size": [
+        240,
+        46
+      ],
+      "flags": {},
+      "order": 19,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "samples",
+          "type": "LATENT",
+          "link": 20
+        },
+        {
+          "name": "mask",
+          "type": "MASK",
+          "link": 19
+        }
+      ],
+      "outputs": [
+        {
+          "name": "LATENT",
+          "type": "LATENT",
+          "slot_index": 0,
+          "links": [
+            21
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.27.0",
+        "Node name for S&R": "SetLatentNoiseMask"
+      },
+      "widgets_values": []
+    },
+    {
+      "id": 44,
+      "type": "SamplerCustomAdvanced",
+      "pos": [
+        1910,
+        700
+      ],
+      "size": [
+        315,
+        130
+      ],
+      "flags": {},
+      "order": 20,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "noise",
+          "type": "NOISE",
+          "link": 24
+        },
+        {
+          "name": "guider",
+          "type": "GUIDER",
+          "link": 23
+        },
+        {
+          "name": "sampler",
+          "type": "SAMPLER",
+          "link": 25
+        },
+        {
+          "name": "sigmas",
+          "type": "SIGMAS",
+          "link": 29
+        },
+        {
+          "name": "latent_image",
+          "type": "LATENT",
+          "link": 21
+        }
+      ],
+      "outputs": [
+        {
+          "name": "output",
+          "type": "LATENT",
+          "slot_index": 0,
+          "links": [
+            26
+          ]
+        },
+        {
+          "name": "denoised_output",
+          "type": "LATENT",
+          "links": []
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.27.0",
+        "Node name for S&R": "SamplerCustomAdvanced"
+      },
+      "widgets_values": []
+    },
+    {
+      "id": 50,
+      "type": "VAEDecode",
+      "pos": [
+        2300,
+        700
+      ],
+      "size": [
+        210,
+        46
+      ],
+      "flags": {},
+      "order": 21,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "samples",
+          "type": "LATENT",
+          "link": 26
+        },
+        {
+          "name": "vae",
+          "type": "VAE",
+          "link": 7
+        }
+      ],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "slot_index": 0,
+          "links": [
+            27
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.27.0",
+        "Node name for S&R": "VAEDecode"
+      },
+      "widgets_values": []
+    },
+    {
+      "id": 23,
+      "type": "FaceParsingResultsParser(FaceParsing)",
+      "pos": [
+        1170,
+        240
+      ],
+      "size": [
+        310,
+        490
+      ],
+      "flags": {},
+      "order": 16,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "result",
+          "type": "FACE_PARSING_RESULT",
+          "link": 17
+        }
+      ],
+      "outputs": [
+        {
+          "name": "MASK",
+          "type": "MASK",
+          "slot_index": 0,
+          "links": [
+            18
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfyui_face_parsing",
+        "ver": "9e3132f216abb0f385222f5086c3b247b29ed411",
+        "Node name for S&R": "FaceParsingResultsParser(FaceParsing)",
+        "aux_id": "Ryuukeisyou/comfyui_face_parsing"
+      },
+      "widgets_values": [
+        false,
+        true,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    {
+      "id": 41,
+      "type": "CFGGuider",
+      "pos": [
+        1170,
+        940
+      ],
+      "size": [
+        315,
+        98
+      ],
+      "flags": {},
+      "order": 17,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "model",
+          "type": "MODEL",
+          "link": 10
+        },
+        {
+          "name": "positive",
+          "type": "CONDITIONING",
+          "link": 13
+        },
+        {
+          "name": "negative",
+          "type": "CONDITIONING",
+          "link": 14
+        }
+      ],
+      "outputs": [
+        {
+          "name": "GUIDER",
+          "type": "GUIDER",
+          "slot_index": 0,
+          "links": [
+            23
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.27.0",
+        "Node name for S&R": "CFGGuider"
+      },
+      "widgets_values": [
+        1.3
+      ]
+    },
+    {
+      "id": 15,
+      "type": "CLIPTextEncode",
+      "pos": [
+        666.2595165535454,
+        641.6654475091702
+      ],
+      "size": [
+        422,
+        200
+      ],
+      "flags": {},
+      "order": 15,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "clip",
+          "type": "CLIP",
+          "link": 11
+        }
+      ],
+      "outputs": [
+        {
+          "name": "CONDITIONING",
+          "type": "CONDITIONING",
+          "slot_index": 0,
+          "links": [
+            13
+          ]
+        }
+      ],
+      "title": "Positive Prompt",
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.27.0",
+        "Node name for S&R": "CLIPTextEncode"
+      },
+      "widgets_values": [
+        "Extreme close-up macro photograph of real human skin, shot on a 100mm macro lens, raw unedited photo, no retouching. Clearly visible skin pores of varying size across the cheeks, nose, forehead, chin and jaw. Fine vellus peach-fuzz hairs, natural dermal micro-relief, individual skin cell texture. Uneven natural pigmentation, scattered soft freckles, subtle redness around the nose and cheeks, tiny moles and natural blemishes, faint fine lines. Natural sebaceous sheen in the T-zone with matte cheeks, realistic subsurface scattering, soft specular micro-highlights. Authentic textured human skin. Keep the same person, expression, makeup and lighting.\n"
+      ]
+    },
+    {
+      "id": 16,
+      "type": "CLIPTextEncode",
+      "pos": [
+        564.540052094353,
+        912.5141314684539
+      ],
+      "size": [
+        422,
+        164
+      ],
+      "flags": {},
+      "order": 12,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "clip",
+          "type": "CLIP",
+          "link": 42
+        }
+      ],
+      "outputs": [
+        {
+          "name": "CONDITIONING",
+          "type": "CONDITIONING",
+          "slot_index": 0,
+          "links": [
+            14
+          ]
+        }
+      ],
+      "title": "Negative Prompt",
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.27.0",
+        "Node name for S&R": "CLIPTextEncode"
+      },
+      "widgets_values": [
+        "smooth skin, poreless, airbrushed, retouched, plastic skin, waxy, glossy, beauty filter, soft focus, blurred skin, doll skin, CGI, 3d render, over-smoothed, matte painting"
+      ]
+    },
+    {
+      "id": 40,
+      "type": "Flux2Scheduler",
+      "pos": [
+        1170,
+        790
+      ],
+      "size": [
+        315,
+        106
+      ],
+      "flags": {},
+      "order": 6,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "SIGMAS",
+          "type": "SIGMAS",
+          "slot_index": 0,
+          "links": [
+            22
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.27.0",
+        "Node name for S&R": "Flux2Scheduler"
+      },
+      "widgets_values": [
+        12,
+        1024,
+        1024
+      ]
+    },
+    {
+      "id": 1,
+      "type": "LoadImage",
+      "pos": [
+        50,
+        50
+      ],
+      "size": [
+        315,
+        314
+      ],
+      "flags": {},
+      "order": 7,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "slot_index": 0,
+          "links": [
+            1
+          ]
+        },
+        {
+          "name": "MASK",
+          "type": "MASK",
+          "links": []
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.27.0",
+        "Node name for S&R": "LoadImage"
+      },
+      "widgets_values": [
+        "Screenshot 2026-07-07 at 4.31.21 PM.png",
+        "image"
+      ]
+    },
+    {
+      "id": 24,
+      "type": "MaskBorderDissolve(FaceParsing)",
+      "pos": [
+        1550,
+        240
+      ],
+      "size": [
+        300,
+        106
+      ],
+      "flags": {},
+      "order": 18,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "mask",
+          "type": "MASK",
+          "link": 18
+        }
+      ],
+      "outputs": [
+        {
+          "name": "MASK",
+          "type": "MASK",
+          "slot_index": 0,
+          "links": [
+            19
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfyui_face_parsing",
+        "ver": "9e3132f216abb0f385222f5086c3b247b29ed411",
+        "Node name for S&R": "MaskBorderDissolve(FaceParsing)",
+        "aux_id": "Ryuukeisyou/comfyui_face_parsing"
+      },
+      "widgets_values": [
+        6,
+        8,
+        3
+      ]
+    },
+    {
+      "id": 66,
+      "type": "ImageCompare",
+      "pos": [
+        3104.7918122703313,
+        343.7804150258481
+      ],
+      "size": [
+        697.0592095028751,
+        540.7643288809808
+      ],
+      "flags": {},
+      "order": 24,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "image_a",
+          "shape": 7,
+          "type": "IMAGE",
+          "link": 40
+        },
+        {
+          "name": "image_b",
+          "shape": 7,
+          "type": "IMAGE",
+          "link": 41
+        }
+      ],
+      "outputs": [],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.27.0",
+        "Node name for S&R": "ImageCompare"
+      },
+      "widgets_values": []
+    },
+    {
+      "id": 2,
+      "type": "ImageResize+",
+      "pos": [
+        420,
+        50
+      ],
+      "size": [
+        315,
+        230
+      ],
+      "flags": {},
+      "order": 10,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "image",
+          "type": "IMAGE",
+          "link": 1
+        }
+      ],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "slot_index": 0,
+          "links": [
+            2,
+            3,
+            4,
+            41
+          ]
+        },
+        {
+          "name": "width",
+          "type": "INT",
+          "links": []
+        },
+        {
+          "name": "height",
+          "type": "INT",
+          "links": []
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfyui_essentials",
+        "ver": "9d9f4bedfc9f0321c19faf71855e228c93bd0dc9",
+        "Node name for S&R": "ImageResize+",
+        "aux_id": "cubiq/ComfyUI_essentials"
+      },
+      "widgets_values": [
+        1536,
+        1536,
+        "lanczos",
+        "keep proportion",
+        "always",
+        8
+      ]
+    },
+    {
+      "id": 62,
+      "type": "SplitSigmasDenoise",
+      "pos": [
+        1545,
+        905
+      ],
+      "size": [
+        300,
+        78
+      ],
+      "flags": {},
+      "order": 9,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "sigmas",
+          "type": "SIGMAS",
+          "link": 22
+        }
+      ],
+      "outputs": [
+        {
+          "name": "high_sigmas",
+          "type": "SIGMAS",
+          "slot_index": 0,
+          "links": []
+        },
+        {
+          "name": "low_sigmas",
+          "type": "SIGMAS",
+          "slot_index": 1,
+          "links": [
+            29
+          ]
+        }
+      ],
+      "title": "Denoise 0.30 (img2img refine)",
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.27.0",
+        "Node name for S&R": "SplitSigmasDenoise"
+      },
+      "widgets_values": [
+        0.46
+      ],
+      "color": "#322",
+      "bgcolor": "#533"
+    },
+    {
+      "id": 51,
+      "type": "ImageBlend",
+      "pos": [
+        2348.882072948368,
+        317.3808010656459
+      ],
+      "size": [
+        315,
+        102
+      ],
+      "flags": {},
+      "order": 22,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "image1",
+          "type": "IMAGE",
+          "link": 27
+        },
+        {
+          "name": "image2",
+          "type": "IMAGE",
+          "link": 4
+        }
+      ],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "slot_index": 0,
+          "links": [
+            35
+          ]
+        }
+      ],
+      "title": "Blend (88% Flux + 12% Original)",
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.27.0",
+        "Node name for S&R": "ImageBlend"
+      },
+      "widgets_values": [
+        0.06,
+        "normal"
+      ]
+    },
+    {
+      "id": 13,
+      "type": "LoraLoader",
+      "pos": [
+        397.385104233292,
+        443.0511727937831
+      ],
+      "size": [
+        315,
+        126
+      ],
+      "flags": {},
+      "order": 11,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "model",
+          "type": "MODEL",
+          "link": 5
+        },
+        {
+          "name": "clip",
+          "type": "CLIP",
+          "link": 8
+        }
+      ],
+      "outputs": [
+        {
+          "name": "MODEL",
+          "type": "MODEL",
+          "slot_index": 0,
+          "links": [
+            10
+          ]
+        },
+        {
+          "name": "CLIP",
+          "type": "CLIP",
+          "slot_index": 1,
+          "links": [
+            11
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.27.0",
+        "Node name for S&R": "LoraLoader"
+      },
+      "widgets_values": [
+        "klein-enhanced-details.safetensors",
+        1.2,
+        0.8
+      ]
+    },
+    {
+      "id": 12,
+      "type": "CLIPLoader",
+      "pos": [
+        49.87665357356214,
+        672.6320273741522
+      ],
+      "size": [
+        315,
+        106
+      ],
+      "flags": {},
+      "order": 8,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "CLIP",
+          "type": "CLIP",
+          "slot_index": 0,
+          "links": [
+            8,
+            42
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.27.0",
+        "Node name for S&R": "CLIPLoader"
+      },
+      "widgets_values": [
+        "qwen_3_8b_fp8mixed.safetensors",
+        "flux2",
+        "default"
+      ]
+    },
+    {
+      "id": 61,
+      "type": "SaveImage",
+      "pos": [
+        2663.462648101089,
+        524.0139375590345
+      ],
+      "size": [
+        315,
+        270.00000000000006
+      ],
+      "flags": {},
+      "order": 23,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "link": 35
+        }
+      ],
+      "outputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "links": [
+            40
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.27.0",
+        "Node name for S&R": "SaveImage"
+      },
+      "widgets_values": [
+        "skin_enhanced_v2"
+      ]
+    }
+  ],
+  "links": [
+    [
+      1,
+      1,
+      0,
+      2,
+      0,
+      "IMAGE"
+    ],
+    [
+      2,
+      2,
+      0,
+      22,
+      2,
+      "IMAGE"
+    ],
+    [
+      3,
+      2,
+      0,
+      30,
+      0,
+      "IMAGE"
+    ],
+    [
+      4,
+      2,
+      0,
+      51,
+      1,
+      "IMAGE"
+    ],
+    [
+      5,
+      10,
+      0,
+      13,
+      0,
+      "MODEL"
+    ],
+    [
+      6,
+      11,
+      0,
+      30,
+      1,
+      "VAE"
+    ],
+    [
+      7,
+      11,
+      0,
+      50,
+      1,
+      "VAE"
+    ],
+    [
+      8,
+      12,
+      0,
+      13,
+      1,
+      "CLIP"
+    ],
+    [
+      10,
+      13,
+      0,
+      41,
+      0,
+      "MODEL"
+    ],
+    [
+      11,
+      13,
+      1,
+      15,
+      0,
+      "CLIP"
+    ],
+    [
+      13,
+      15,
+      0,
+      41,
+      1,
+      "CONDITIONING"
+    ],
+    [
+      14,
+      16,
+      0,
+      41,
+      2,
+      "CONDITIONING"
+    ],
+    [
+      15,
+      20,
+      0,
+      22,
+      0,
+      "FACE_PARSING_MODEL"
+    ],
+    [
+      16,
+      21,
+      0,
+      22,
+      1,
+      "FACE_PARSING_PROCESSOR"
+    ],
+    [
+      17,
+      22,
+      1,
+      23,
+      0,
+      "FACE_PARSING_RESULT"
+    ],
+    [
+      18,
+      23,
+      0,
+      24,
+      0,
+      "MASK"
+    ],
+    [
+      19,
+      24,
+      0,
+      31,
+      1,
+      "MASK"
+    ],
+    [
+      20,
+      30,
+      0,
+      31,
+      0,
+      "LATENT"
+    ],
+    [
+      21,
+      31,
+      0,
+      44,
+      4,
+      "LATENT"
+    ],
+    [
+      22,
+      40,
+      0,
+      62,
+      0,
+      "SIGMAS"
+    ],
+    [
+      23,
+      41,
+      0,
+      44,
+      1,
+      "GUIDER"
+    ],
+    [
+      24,
+      42,
+      0,
+      44,
+      0,
+      "NOISE"
+    ],
+    [
+      25,
+      43,
+      0,
+      44,
+      2,
+      "SAMPLER"
+    ],
+    [
+      26,
+      44,
+      0,
+      50,
+      0,
+      "LATENT"
+    ],
+    [
+      27,
+      50,
+      0,
+      51,
+      0,
+      "IMAGE"
+    ],
+    [
+      29,
+      62,
+      1,
+      44,
+      3,
+      "SIGMAS"
+    ],
+    [
+      35,
+      51,
+      0,
+      61,
+      0,
+      "IMAGE"
+    ],
+    [
+      40,
+      61,
+      0,
+      66,
+      0,
+      "IMAGE"
+    ],
+    [
+      41,
+      2,
+      0,
+      66,
+      1,
+      "IMAGE"
+    ],
+    [
+      42,
+      12,
+      0,
+      16,
+      0,
+      "CLIP"
+    ]
+  ],
+  "groups": [],
+  "config": {},
+  "extra": {
+    "ds": {
+      "scale": 0.6155484746850687,
+      "offset": [
+        1184.911067650496,
+        189.97380630400806
+      ]
+    },
+    "frontendVersion": "1.45.20",
+    "_fix_notes": [
+      "Ghost-eyes fix: added SplitSigmasDenoise (denoise 0.30) so masked skin is REFINED, not regenerated.",
+      "Flux2Scheduler steps 2->8 to give the denoise fraction real steps (~3 effective).",
+      "MaskBorderDissolve blur 11->8 (tighter edge near eyes).",
+      "Dials: raise denoise (0.30) for more texture / lower for safer identity; ImageBlend(51)=0.3 original mix."
+    ],
+    "_texture_notes": [
+      "Texture pass: denoise 0.30->0.40, steps 8->12, ImageBlend original 0.30->0.12, LoRA 0.75->0.95.",
+      "If skin gets too rough / over-textured: lower denoise toward 0.32 or raise ImageBlend original to ~0.2.",
+      "If eyes ghost again: denoise is the cause -> back off to ~0.35.",
+      "Next-level texture: install ComfyUI-Detail-Daemon and wrap the sampler in DetailDaemonSamplerNode."
+    ]
+  },
+  "version": 0.4
+}
