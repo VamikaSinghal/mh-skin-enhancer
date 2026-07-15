@@ -1,0 +1,280 @@
+{
+  "10": {
+    "inputs": {
+      "vae_name": "flux2-vae-9b.safetensors"
+    },
+    "class_type": "VAELoader",
+    "_meta": {
+      "title": "Load VAE"
+    }
+  },
+  "11": {
+    "inputs": {
+      "conditioning": [
+        "92:84",
+        0
+      ]
+    },
+    "class_type": "ConditioningZeroOut",
+    "_meta": {
+      "title": "ConditioningZeroOut"
+    }
+  },
+  "13": {
+    "inputs": {
+      "unet_name": "flux-2-klein-9b.safetensors",
+      "weight_dtype": "default"
+    },
+    "class_type": "UNETLoader",
+    "_meta": {
+      "title": "Load Diffusion Model"
+    }
+  },
+  "14": {
+    "inputs": {
+      "clip_name": "qwen_3_8b_fp8mixed.safetensors",
+      "type": "flux2",
+      "device": "default"
+    },
+    "class_type": "CLIPLoader",
+    "_meta": {
+      "title": "Load CLIP"
+    }
+  },
+  "17": {
+    "inputs": {
+      "samples": [
+        "18",
+        0
+      ],
+      "vae": [
+        "10",
+        0
+      ]
+    },
+    "class_type": "VAEDecode",
+    "_meta": {
+      "title": "VAE Decode"
+    }
+  },
+  "18": {
+    "inputs": {
+      "seed": 660802076166664,
+      "steps": 10,
+      "cfg": 5,
+      "sampler_name": "euler",
+      "scheduler": "normal",
+      "denoise": 0.25,
+      "model": [
+        "86",
+        0
+      ],
+      "positive": [
+        "92:84",
+        0
+      ],
+      "negative": [
+        "100",
+        0
+      ],
+      "latent_image": [
+        "53",
+        0
+      ]
+    },
+    "class_type": "KSampler",
+    "_meta": {
+      "title": "KSampler"
+    }
+  },
+  "38": {
+    "inputs": {
+      "lora_name": "flux-2-klein-NSFW.safetensors",
+      "strength_model": 0.4,
+      "model": [
+        "13",
+        0
+      ]
+    },
+    "class_type": "LoraLoaderModelOnly",
+    "_meta": {
+      "title": "Load LoRA"
+    }
+  },
+  "43": {
+    "inputs": {
+      "SD1.5": "关",
+      "SDXL": "关",
+      "FLUX": "关",
+      "WAN": "关",
+      "QWEN": "关",
+      "裁剪方式": "中心裁剪",
+      "缩放算法": "lanczos",
+      "启用边长缩放": true,
+      "缩放至边": "最长边",
+      "缩放长度": 1024,
+      "图像": [
+        "51",
+        0
+      ]
+    },
+    "class_type": "EasySizeSimpleImage",
+    "_meta": {
+      "title": "简单图像尺寸"
+    }
+  },
+  "50": {
+    "inputs": {
+      "filename_prefix": "AI Skin Enhancer",
+      "images": [
+        "85",
+        0
+      ]
+    },
+    "class_type": "SaveImage",
+    "_meta": {
+      "title": "Save Image"
+    }
+  },
+  "51": {
+    "inputs": {
+      "image": "Screenshot 2026-07-07 at 4.31.21 PM.png"
+    },
+    "class_type": "LoadImage",
+    "_meta": {
+      "title": "Load Image"
+    }
+  },
+  "53": {
+    "inputs": {
+      "pixels": [
+        "43",
+        0
+      ],
+      "vae": [
+        "10",
+        0
+      ]
+    },
+    "class_type": "VAEEncode",
+    "_meta": {
+      "title": "VAE Encode"
+    }
+  },
+  "64": {
+    "inputs": {
+      "prompt": "film grain, subtle noise, detailed skin pores, fine skin texture, natural skin detail, analog photo, snapshot photo, retain the complexion as it was.\n\ndo not add the sanpaku eyes, or any extra white space below the pupils\n\nthe person should not look tired. make the photo look alive.\n\nIf the person already has visible wrinkles, fine lines, or folds (forehead lines, crow's feet, nasolabial folds, marionette lines, etc.), preserve their EXACT original depth, shape, and darkness exactly as they appear in the source photo. Do NOT deepen, darken, thicken, lengthen, or emphasize any existing wrinkle or fold in any way -- the person must not look any older than the original photo. Only add fine pore-level texture and skin grain to the skin's surface; never increase the depth or prominence of existing lines or folds."
+    },
+    "class_type": "CR Prompt Text",
+    "_meta": {
+      "title": "补充提示词（可不填）"
+    }
+  },
+  "75": {
+    "inputs": {
+      "separator": ", ",
+      "text2": [
+        "64",
+        0
+      ]
+    },
+    "class_type": "CR Text Concatenate",
+    "_meta": {
+      "title": "🔤 CR Text Concatenate"
+    }
+  },
+  "82": {
+    "inputs": {
+      "lora_name": "Lenovo-UltraReal.safetensors",
+      "strength_model": 1,
+      "model": [
+        "38",
+        0
+      ]
+    },
+    "class_type": "LoraLoaderModelOnly",
+    "_meta": {
+      "title": "Load LoRA"
+    }
+  },
+  "85": {
+    "inputs": {
+      "blend_factor": 0.2,
+      "blend_mode": "normal",
+      "image1": [
+        "90",
+        0
+      ],
+      "image2": [
+        "51",
+        0
+      ]
+    },
+    "class_type": "ImageBlend",
+    "_meta": {
+      "title": "Blend Images"
+    }
+  },
+  "86": {
+    "inputs": {
+      "lora_name": "klein-enhanced-details.safetensors",
+      "strength_model": 0.3,
+      "model": [
+        "82",
+        0
+      ]
+    },
+    "class_type": "LoraLoaderModelOnly",
+    "_meta": {
+      "title": "Load LoRA"
+    }
+  },
+  "90": {
+    "inputs": {
+      "method": "mkl",
+      "image_output": "Preview",
+      "save_prefix": "ComfyUI",
+      "image_ref": [
+        "43",
+        0
+      ],
+      "image_target": [
+        "17",
+        0
+      ]
+    },
+    "class_type": "easy imageColorMatch",
+    "_meta": {
+      "title": "Image Color Match"
+    }
+  },
+  "100": {
+    "inputs": {
+      "text": "aged\nwrinkled\ntear troughs\nskin folds\ntired\nfatigued\nsleep deprived\nunder-eye bags\neye bags",
+      "clip": [
+        "14",
+        0
+      ]
+    },
+    "class_type": "CLIPTextEncode",
+    "_meta": {
+      "title": "Negative Prompt (REAL -- fixes eye-bag/tired issue)"
+    }
+  },
+  "92:84": {
+    "inputs": {
+      "text": [
+        "75",
+        0
+      ],
+      "clip": [
+        "14",
+        0
+      ]
+    },
+    "class_type": "CLIPTextEncode",
+    "_meta": {
+      "title": "CLIP Text Encode (Prompt)"
+    }
+  }
+}
